@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test std app properties - attributes</title>
+
+
+  <script defer src="main_std.dart" type="application/dart"></script>
+  <script defer src="packages/browser/dart.js"></script>
+
+</head>
+
+<body>
+
+<template id="id_main_node">Before [[v1]] between [[v1]][[s2]] After</template>
+
+<template id="id_int_node">Int solo [[v1]]</template>
+
+<template id="id_string_node">String solo [[s2]]</template>
+
+<template id="id_computed_node">Computed solo [[composedStr(prefix)]]</template>
+
+<template id="id_combined_node">Combined [[composedStr(prefix)]] from [[s2]] , [[v1]]</template>
+
+<template id="id_nested_int_node">
+  <div>div [[v1]] text<span>span [[v1]] text<a>a [[v1]] text</a></span></div>
+</template>
+
+<template id="id_nested_mixed_node">
+  <div>div [[composedStr(prefix)]] text<span>span [[s2]] text<a>a [[v1]] text</a></span></div>
+</template>
+
+<template id="id_attrbind_node">
+  <mock-client w1="{{v1}}"></mock-client>
+</template>
+
+<div id="id_container"></div>
+
+</body>
+</html>

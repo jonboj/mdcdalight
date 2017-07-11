@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <title>Test Drawer</title>
+
+
+  <script src="../../lib/util_js/require.js"></script>
+  <script src="../../lib/util_js/mdcweb_load.js"></script>
+  <script defer src="main_drawer.dart" type="application/dart"></script>
+  <script defer src="packages/browser/dart.js"></script>
+
+</head>
+
+<body class="mdc-typography">
+<div class="mdc-toolbar mdc-toolbar--fixed">
+  <div class="mdc-toolbar__row">
+    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+      <button id="id_menu_button" class="material-icons mdc-toolbar__icon--menu">menu</button>
+      <span class="mdc-toolbar__title catalog-title">Temporary Drawer</span>
+    </section>
+  </div>
+</div>
+
+<mdc-temporary-drawer-dart>
+  <nav class="mdc-temporary-drawer__drawer">
+    <header class="mdc-temporary-drawer__header">
+      <div class="mdc-temporary-drawer__header-content mdc-theme--primary-bg mdc-theme--text-primary-on-primary">
+        Header here
+      </div>
+    </header>
+    <nav class="mdc-temporary-drawer__content mdc-list-group">
+      <div id="icon-with-text-demo" class="mdc-list">
+        <a class="mdc-list-item mdc-temporary-drawer--selected" href="#">
+          <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">inbox</i>Inbox
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">star</i>Star
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">send</i>Sent Mail
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">drafts</i>Drafts
+        </a>
+      </div>
+
+      <hr class="mdc-list-divider">
+
+      <div class="mdc-list">
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">email</i>All Mail
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">delete</i>Trash
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">report</i>Spam
+        </a>
+      </div>
+    </nav>
+  </nav>
+</mdc-temporary-drawer-dart>
+<main class="demo-main mdc-toolbar-fixed-adjust">
+  <h1 class="mdc-typography--display1">Temporary Drawer</h1>
+  <p class="mdc-typography--body1">Click the menu icon above to open.</p>
+</main>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+
+<!--Test of transitive bindings. Host sends to targets with oneway bindings, -->
+<!--receives from targets with twoway bindings. Setup in a chain of three targets,-->
+<!--where last target updates host.i1, this triggers and update of first target -->
+<!--which triggers a new chain of update.-->
+<template>
+  <style>
+  </style>
+  Host element
+  <target-elem id="id_t0" pdown="[[i1]]" pup="{{i2}}"></target-elem>
+  <target-elem id="id_t1" pdown="[[i2]]" pup="{{i3}}"></target-elem>
+  <target-elem id="id_t2" pdown="[[i3]]" pup="{{i4}}"></target-elem>
+</template>
