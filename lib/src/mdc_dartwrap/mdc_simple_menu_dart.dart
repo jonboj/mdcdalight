@@ -59,9 +59,9 @@ class MdcSimpleMenuDart extends HtmlElement with MdcSimpleMenuDartPropBind, Bind
     createBindFromElement(this);
   }
 
-  void open(final bool open){
-    _jsSimpleMenu.open = open;
-  }
+  void set open(final bool open) => _jsSimpleMenu.open = open;
+
+  bool get open => _jsSimpleMenu.open;
 
   void handleSelected(final CustomEvent event){
     _log.debug('handleSelected : ' + event.detail['index'].toString());

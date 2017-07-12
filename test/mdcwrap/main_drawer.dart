@@ -19,7 +19,8 @@ void setupHandler(){
   MdcTemporaryDrawerDart drawerE = document.querySelector('mdc-temporary-drawer-dart');
 
   document.querySelector('#id_menu_button').onClick.listen((final Event e){
-    drawerE.open(true);
+    //Toggle
+    drawerE.open = !drawerE.open;
   });
 
   drawerE.addEventListener('MDCTemporaryDrawer:open', (final Event e){

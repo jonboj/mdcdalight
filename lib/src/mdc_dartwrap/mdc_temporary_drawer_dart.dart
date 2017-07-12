@@ -36,7 +36,8 @@ class MdcTemporaryDrawerDart extends HtmlElement {
     _jsTemporaryDrawer = new mdcjs.MDCTemporaryDrawer(this);
   }
 
-  void open(final bool open){
-   _jsTemporaryDrawer.open = open;
-  }
+
+  void set open(final bool open) => _jsTemporaryDrawer.open = open;
+
+  bool get open =>  _jsTemporaryDrawer.open;
 }

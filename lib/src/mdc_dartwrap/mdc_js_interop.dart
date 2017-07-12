@@ -22,12 +22,14 @@ import "package:js/js.dart";
 class MDCTemporaryDrawer {
   external factory MDCTemporaryDrawer(final Element e);
   external void set open(final bool state);
+  external bool get open;
 }
 
 @JS()
 class MDCSimpleMenu {
   external factory MDCSimpleMenu(final Element e);
   external void set open(final bool state);
+  external bool get open;
 }
 
 @JS()
