@@ -13,4 +13,4 @@
 // limitations under the License.
 
 //Projects running from other dir than web can customize the path
-String MDC_WEBJS_PATH = 'packages/mdcdalight/mdc_web_js_v0_15_0/';
+String MDC_WEBJS_PATH = 'packages/mdcdalight/mdc_web_js_v0_16_0/';

@@ -194,6 +194,8 @@
  * }
  * ```
  */
+/* TODO(sgomes): Figure out what to do about desktop font sizes. */
+/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
 .mdc-button {
   --mdc-ripple-surface-width: 0;
   --mdc-ripple-surface-height: 0;
@@ -205,8 +207,12 @@
   --mdc-ripple-fg-translate-start: 0;
   will-change: transform, opacity;
   -webkit-tap-highlight-color: transparent;
+  /* @alternate */
   color: rgba(0, 0, 0, 0.87);
   color: var(--mdc-theme-text-primary-on-light, rgba(0, 0, 0, 0.87));
+  font-family: Roboto, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   display: inline-block;
   position: relative;
   min-width: 64px;
@@ -254,6 +260,7 @@
     left: calc(50% - 100%);
     width: 200%;
     height: 200%;
+    /* @alternate */
     -webkit-transform: scale(0);
             transform: scale(0);
     -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
@@ -265,14 +272,19 @@
             transition-duration: 120ms;
     opacity: 1; }
   .mdc-button.mdc-ripple-upgraded--unbounded::before {
+    /* @alternate */
     top: calc(50% - 50%);
     top: var(--mdc-ripple-top, calc(50% - 50%));
+    /* @alternate */
     left: calc(50% - 50%);
     left: var(--mdc-ripple-left, calc(50% - 50%));
+    /* @alternate */
     width: 100%;
     width: var(--mdc-ripple-fg-size, 100%);
+    /* @alternate */
     height: 100%;
     height: var(--mdc-ripple-fg-size, 100%);
+    /* @alternate */
     -webkit-transform: scale(0);
             transform: scale(0);
     -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
@@ -293,8 +305,10 @@
   .mdc-button.mdc-ripple-upgraded::after {
     top: 0;
     left: 0;
+    /* @alternate */
     width: 100%;
     width: var(--mdc-ripple-fg-size, 100%);
+    /* @alternate */
     height: 100%;
     height: var(--mdc-ripple-fg-size, 100%);
     -webkit-transform: scale(0);
@@ -306,12 +320,16 @@
     -webkit-transform-origin: center center;
             transform-origin: center center; }
   .mdc-button.mdc-ripple-upgraded--unbounded::after {
+    /* @alternate */
     top: 0;
     top: var(--mdc-ripple-top, 0);
+    /* @alternate */
     left: 0;
     left: var(--mdc-ripple-left, 0);
+    /* @alternate */
     width: 100%;
     width: var(--mdc-ripple-fg-size, 100%);
+    /* @alternate */
     height: 100%;
     height: var(--mdc-ripple-fg-size, 100%);
     -webkit-transform: scale(0);
@@ -340,6 +358,7 @@
     --mdc-ripple-fg-translate-start: 0;
     will-change: transform, opacity;
     -webkit-tap-highlight-color: transparent;
+    /* @alternate */
     color: white;
     color: var(--mdc-theme-text-primary-on-dark, white); }
     .mdc-button--theme-dark:not(.mdc-ripple-upgraded):hover::before, .mdc-button--theme-dark:not(.mdc-ripple-upgraded):focus::before, .mdc-button--theme-dark:not(.mdc-ripple-upgraded):active::after,
@@ -369,6 +388,7 @@
       left: calc(50% - 100%);
       width: 200%;
       height: 200%;
+      /* @alternate */
       -webkit-transform: scale(0);
               transform: scale(0);
       -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
@@ -383,14 +403,19 @@
       opacity: 1; }
     .mdc-button--theme-dark.mdc-ripple-upgraded--unbounded::before,
     .mdc-theme--dark .mdc-button.mdc-ripple-upgraded--unbounded::before {
+      /* @alternate */
       top: calc(50% - 50%);
       top: var(--mdc-ripple-top, calc(50% - 50%));
+      /* @alternate */
       left: calc(50% - 50%);
       left: var(--mdc-ripple-left, calc(50% - 50%));
+      /* @alternate */
       width: 100%;
       width: var(--mdc-ripple-fg-size, 100%);
+      /* @alternate */
       height: 100%;
       height: var(--mdc-ripple-fg-size, 100%);
+      /* @alternate */
       -webkit-transform: scale(0);
               transform: scale(0);
       -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
@@ -413,8 +438,10 @@
     .mdc-theme--dark .mdc-button.mdc-ripple-upgraded::after {
       top: 0;
       left: 0;
+      /* @alternate */
       width: 100%;
       width: var(--mdc-ripple-fg-size, 100%);
+      /* @alternate */
       height: 100%;
       height: var(--mdc-ripple-fg-size, 100%);
       -webkit-transform: scale(0);
@@ -428,12 +455,16 @@
               transform-origin: center center; }
     .mdc-button--theme-dark.mdc-ripple-upgraded--unbounded::after,
     .mdc-theme--dark .mdc-button.mdc-ripple-upgraded--unbounded::after {
+      /* @alternate */
       top: 0;
       top: var(--mdc-ripple-top, 0);
+      /* @alternate */
       left: 0;
       left: var(--mdc-ripple-left, 0);
+      /* @alternate */
       width: 100%;
       width: var(--mdc-ripple-fg-size, 100%);
+      /* @alternate */
       height: 100%;
       height: var(--mdc-ripple-fg-size, 100%);
       -webkit-transform: scale(0);
@@ -469,6 +500,7 @@
               transition-duration: 85ms;
       opacity: .6; }
     .mdc-button.mdc-button--primary::before {
+      /* @alternate */
       background-color: rgba(63, 81, 181, 0.12);
       position: absolute;
       top: calc(50% - 100%);
@@ -489,6 +521,7 @@
       left: calc(50% - 100%);
       width: 200%;
       height: 200%;
+      /* @alternate */
       -webkit-transform: scale(0);
               transform: scale(0);
       -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
@@ -500,19 +533,25 @@
               transition-duration: 120ms;
       opacity: 1; }
     .mdc-button.mdc-button--primary.mdc-ripple-upgraded--unbounded::before {
+      /* @alternate */
       top: calc(50% - 50%);
       top: var(--mdc-ripple-top, calc(50% - 50%));
+      /* @alternate */
       left: calc(50% - 50%);
       left: var(--mdc-ripple-left, calc(50% - 50%));
+      /* @alternate */
       width: 100%;
       width: var(--mdc-ripple-fg-size, 100%);
+      /* @alternate */
       height: 100%;
       height: var(--mdc-ripple-fg-size, 100%);
+      /* @alternate */
       -webkit-transform: scale(0);
               transform: scale(0);
       -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
               transform: scale(var(--mdc-ripple-fg-scale, 0)); }
     .mdc-button.mdc-button--primary::after {
+      /* @alternate */
       background-color: rgba(63, 81, 181, 0.12);
       position: absolute;
       top: calc(50% - 100%);
@@ -531,8 +570,10 @@
     .mdc-button.mdc-button--primary.mdc-ripple-upgraded::after {
       top: 0;
       left: 0;
+      /* @alternate */
       width: 100%;
       width: var(--mdc-ripple-fg-size, 100%);
+      /* @alternate */
       height: 100%;
       height: var(--mdc-ripple-fg-size, 100%);
       -webkit-transform: scale(0);
@@ -544,12 +585,16 @@
       -webkit-transform-origin: center center;
               transform-origin: center center; }
     .mdc-button.mdc-button--primary.mdc-ripple-upgraded--unbounded::after {
+      /* @alternate */
       top: 0;
       top: var(--mdc-ripple-top, 0);
+      /* @alternate */
       left: 0;
       left: var(--mdc-ripple-left, 0);
+      /* @alternate */
       width: 100%;
       width: var(--mdc-ripple-fg-size, 100%);
+      /* @alternate */
       height: 100%;
       height: var(--mdc-ripple-fg-size, 100%);
       -webkit-transform: scale(0);
@@ -580,6 +625,7 @@
               transition-duration: 85ms;
       opacity: .6; }
     .mdc-button.mdc-button--accent::before {
+      /* @alternate */
       background-color: rgba(255, 64, 129, 0.12);
       position: absolute;
       top: calc(50% - 100%);
@@ -600,6 +646,7 @@
       left: calc(50% - 100%);
       width: 200%;
       height: 200%;
+      /* @alternate */
       -webkit-transform: scale(0);
               transform: scale(0);
       -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
@@ -611,19 +658,25 @@
               transition-duration: 120ms;
       opacity: 1; }
     .mdc-button.mdc-button--accent.mdc-ripple-upgraded--unbounded::before {
+      /* @alternate */
       top: calc(50% - 50%);
       top: var(--mdc-ripple-top, calc(50% - 50%));
+      /* @alternate */
       left: calc(50% - 50%);
       left: var(--mdc-ripple-left, calc(50% - 50%));
+      /* @alternate */
       width: 100%;
       width: var(--mdc-ripple-fg-size, 100%);
+      /* @alternate */
       height: 100%;
       height: var(--mdc-ripple-fg-size, 100%);
+      /* @alternate */
       -webkit-transform: scale(0);
               transform: scale(0);
       -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
               transform: scale(var(--mdc-ripple-fg-scale, 0)); }
     .mdc-button.mdc-button--accent::after {
+      /* @alternate */
       background-color: rgba(255, 64, 129, 0.12);
       position: absolute;
       top: calc(50% - 100%);
@@ -642,8 +695,10 @@
     .mdc-button.mdc-button--accent.mdc-ripple-upgraded::after {
       top: 0;
       left: 0;
+      /* @alternate */
       width: 100%;
       width: var(--mdc-ripple-fg-size, 100%);
+      /* @alternate */
       height: 100%;
       height: var(--mdc-ripple-fg-size, 100%);
       -webkit-transform: scale(0);
@@ -655,12 +710,16 @@
       -webkit-transform-origin: center center;
               transform-origin: center center; }
     .mdc-button.mdc-button--accent.mdc-ripple-upgraded--unbounded::after {
+      /* @alternate */
       top: 0;
       top: var(--mdc-ripple-top, 0);
+      /* @alternate */
       left: 0;
       left: var(--mdc-ripple-left, 0);
+      /* @alternate */
       width: 100%;
       width: var(--mdc-ripple-fg-size, 100%);
+      /* @alternate */
       height: 100%;
       height: var(--mdc-ripple-fg-size, 100%);
       -webkit-transform: scale(0);
@@ -731,6 +790,7 @@
         left: calc(50% - 100%);
         width: 200%;
         height: 200%;
+        /* @alternate */
         -webkit-transform: scale(0);
                 transform: scale(0);
         -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
@@ -742,14 +802,19 @@
                 transition-duration: 120ms;
         opacity: 1; }
       .mdc-button--raised.mdc-button--primary.mdc-ripple-upgraded--unbounded::before {
+        /* @alternate */
         top: calc(50% - 50%);
         top: var(--mdc-ripple-top, calc(50% - 50%));
+        /* @alternate */
         left: calc(50% - 50%);
         left: var(--mdc-ripple-left, calc(50% - 50%));
+        /* @alternate */
         width: 100%;
         width: var(--mdc-ripple-fg-size, 100%);
+        /* @alternate */
         height: 100%;
         height: var(--mdc-ripple-fg-size, 100%);
+        /* @alternate */
         -webkit-transform: scale(0);
                 transform: scale(0);
         -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
@@ -770,8 +835,10 @@
       .mdc-button--raised.mdc-button--primary.mdc-ripple-upgraded::after {
         top: 0;
         left: 0;
+        /* @alternate */
         width: 100%;
         width: var(--mdc-ripple-fg-size, 100%);
+        /* @alternate */
         height: 100%;
         height: var(--mdc-ripple-fg-size, 100%);
         -webkit-transform: scale(0);
@@ -783,12 +850,16 @@
         -webkit-transform-origin: center center;
                 transform-origin: center center; }
       .mdc-button--raised.mdc-button--primary.mdc-ripple-upgraded--unbounded::after {
+        /* @alternate */
         top: 0;
         top: var(--mdc-ripple-top, 0);
+        /* @alternate */
         left: 0;
         left: var(--mdc-ripple-left, 0);
+        /* @alternate */
         width: 100%;
         width: var(--mdc-ripple-fg-size, 100%);
+        /* @alternate */
         height: 100%;
         height: var(--mdc-ripple-fg-size, 100%);
         -webkit-transform: scale(0);
@@ -836,6 +907,7 @@
         left: calc(50% - 100%);
         width: 200%;
         height: 200%;
+        /* @alternate */
         -webkit-transform: scale(0);
                 transform: scale(0);
         -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
@@ -847,14 +919,19 @@
                 transition-duration: 120ms;
         opacity: 1; }
       .mdc-button--raised.mdc-button--accent.mdc-ripple-upgraded--unbounded::before {
+        /* @alternate */
         top: calc(50% - 50%);
         top: var(--mdc-ripple-top, calc(50% - 50%));
+        /* @alternate */
         left: calc(50% - 50%);
         left: var(--mdc-ripple-left, calc(50% - 50%));
+        /* @alternate */
         width: 100%;
         width: var(--mdc-ripple-fg-size, 100%);
+        /* @alternate */
         height: 100%;
         height: var(--mdc-ripple-fg-size, 100%);
+        /* @alternate */
         -webkit-transform: scale(0);
                 transform: scale(0);
         -webkit-transform: scale(var(--mdc-ripple-fg-scale, 0));
@@ -875,8 +952,10 @@
       .mdc-button--raised.mdc-button--accent.mdc-ripple-upgraded::after {
         top: 0;
         left: 0;
+        /* @alternate */
         width: 100%;
         width: var(--mdc-ripple-fg-size, 100%);
+        /* @alternate */
         height: 100%;
         height: var(--mdc-ripple-fg-size, 100%);
         -webkit-transform: scale(0);
@@ -888,12 +967,16 @@
         -webkit-transform-origin: center center;
                 transform-origin: center center; }
       .mdc-button--raised.mdc-button--accent.mdc-ripple-upgraded--unbounded::after {
+        /* @alternate */
         top: 0;
         top: var(--mdc-ripple-top, 0);
+        /* @alternate */
         left: 0;
         left: var(--mdc-ripple-left, 0);
+        /* @alternate */
         width: 100%;
         width: var(--mdc-ripple-fg-size, 100%);
+        /* @alternate */
         height: 100%;
         height: var(--mdc-ripple-fg-size, 100%);
         -webkit-transform: scale(0);
@@ -910,37 +993,47 @@
                 animation: 83ms mdc-ripple-fg-opacity-out; }
     .mdc-button--theme-dark .mdc-button--raised,
     .mdc-theme--dark .mdc-button--raised {
+      /* @alternate */
       background-color: #3f51b5;
       background-color: var(--mdc-theme-primary, #3f51b5);
+      /* @alternate */
       color: white;
       color: var(--mdc-theme-text-primary-on-primary, white); }
       .mdc-button--theme-dark .mdc-button--raised::before,
       .mdc-theme--dark .mdc-button--raised::before {
         color: black; }
   .mdc-button--primary {
+    /* @alternate */
     color: #3f51b5;
     color: var(--mdc-theme-primary, #3f51b5); }
     .mdc-button--theme-dark .mdc-button--primary,
     .mdc-theme--dark .mdc-button--primary {
+      /* @alternate */
       color: #3f51b5;
       color: var(--mdc-theme-primary, #3f51b5); }
     .mdc-button--primary.mdc-button--raised {
+      /* @alternate */
       background-color: #3f51b5;
       background-color: var(--mdc-theme-primary, #3f51b5);
+      /* @alternate */
       color: white;
       color: var(--mdc-theme-text-primary-on-primary, white); }
       .mdc-button--primary.mdc-button--raised::before {
         color: black; }
   .mdc-button--accent {
+    /* @alternate */
     color: #ff4081;
     color: var(--mdc-theme-accent, #ff4081); }
     .mdc-button--theme-dark .mdc-button--accent,
     .mdc-theme--dark .mdc-button--accent {
+      /* @alternate */
       color: #ff4081;
       color: var(--mdc-theme-accent, #ff4081); }
     .mdc-button--accent.mdc-button--raised {
+      /* @alternate */
       background-color: #ff4081;
       background-color: var(--mdc-theme-accent, #ff4081);
+      /* @alternate */
       color: white;
       color: var(--mdc-theme-text-primary-on-accent, white); }
       .mdc-button--accent.mdc-button--raised::before {

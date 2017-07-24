@@ -19,7 +19,7 @@ The webpack build uses Node. In order to use the `css` and `js` files with Chrom
 
 Next sections decribes how to setup Node and build `css` / `js` files. The instructions are written with limited knowlegde of node/babel/npm/webpack, so opportunities for better and setups.
 
-The instructions are latest verified with mdc web version `v0.15.0` .
+The instructions are latest verified with mdc web version `v0.16.0` .
 
 ### Install Node
 
@@ -65,10 +65,10 @@ The commands and configurations are executed in root of the cloned mdc-web direc
 
 ### Transfer to mdcdalight
 
-With the build `css` and `js` files copied to a sub directory of `lib` in mdcdalight e.g. `lib/mdc_web_js_v0_15_0` two paths shall be configured.
+With the build `css` and `js` files copied to a sub directory of `lib` in mdcdalight e.g. `lib/mdc_web_js_v0_16_0` two paths shall be configured.
 
-* In dart file `mdc_dartwrap/mdc_webjs_path.dart` the constant `MDC_WEBJS_PATH` shall be set to the imported files. e.g. `packages/mdcdalight/mdc_web_js_v0_15_0/`.
+* In dart file `mdc_dartwrap/mdc_webjs_path.dart` the constant `MDC_WEBJS_PATH` shall be set to the imported files. e.g. `packages/mdcdalight/mdc_web_js_v0_16_0/`.
 
-* In js file `util_js/mdcweb_load.js` the constant `PACKAGE_DIR` is similar set to the imported files. e.g. `packages/mdcdalight/mdc_web_js_v0_15_0/`.
+* In js file `util_js/mdcweb_load.js` the constant `PACKAGE_DIR` is similar set to the imported files. e.g. `packages/mdcdalight/mdc_web_js_v0_16_0/`.
 
 Now build and import are complete and mdcdalight components like e.g. `MdcTemporaryDrawerDart` ready to use.

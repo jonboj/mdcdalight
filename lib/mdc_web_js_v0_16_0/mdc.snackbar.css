@@ -96,7 +96,7 @@
  * ```
  *
  * You can also pass a 4th optional $root-selector argument which will be forwarded to `mdc-rtl`,
- * e.g. `@include mdc-rtl-reflexive-box-property(margin, left, 8px, ".mdc-component")`.
+ * e.g. `@include mdc-rtl-reflexive-box(margin, left, 8px, ".mdc-component")`.
  *
  * Note that this function will always zero out the original value in an RTL context. If you're
  * trying to flip the values, use mdc-rtl-reflexive-property().
@@ -354,6 +354,7 @@
       margin-right: 0; }
     .mdc-snackbar--theme-dark .mdc-snackbar__text,
     .mdc-theme--dark .mdc-snackbar__text {
+      /* @alternate */
       color: rgba(0, 0, 0, 0.87);
       color: var(--mdc-theme-text-primary-on-light, rgba(0, 0, 0, 0.87)); }
   .mdc-snackbar--multiline .mdc-snackbar__text {
@@ -361,6 +362,7 @@
   .mdc-snackbar--multiline.mdc-snackbar--action-on-bottom .mdc-snackbar__text {
     margin: 0; }
   .mdc-snackbar__action-button {
+    /* @alternate */
     color: #ff4081;
     color: var(--mdc-theme-accent, #ff4081);
     margin-left: 0;
@@ -373,6 +375,7 @@
     visibility: hidden; }
     .mdc-snackbar--theme-dark .mdc-snackbar__action-button,
     .mdc-theme--dark .mdc-snackbar__action-button {
+      /* @alternate */
       color: #3f51b5;
       color: var(--mdc-theme-primary, #3f51b5); }
     [dir="rtl"] .mdc-snackbar .mdc-snackbar__action-button,
