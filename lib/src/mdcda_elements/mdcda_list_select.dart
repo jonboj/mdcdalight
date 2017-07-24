@@ -64,7 +64,8 @@ class MdcdaListSelectPropBind<T> implements IPropBind {
      new PropertyBindSet(SELECTED, () => selected, (final int i){ selected = i; })];
 }
 
-class MdcdaListSelect<T> extends TemplateElement with MdcdaListSelectPropBind, BindBaseCtrl implements ICustomBindElement {
+class MdcdaListSelect<T> extends TemplateElement with MdcdaListSelectPropBind, BindBaseCtrl
+                         implements ICustomBindElement {
 
   static final LogMdcda _log = new LogMdcda.fromType(MdcdaListSelect);
 
@@ -123,7 +124,9 @@ class MdcdaListSelect<T> extends TemplateElement with MdcdaListSelectPropBind, B
     }
 
     lDivs[selected].attributes[SELECTED_ATTRIBUTE] = '';
-    List<DivElement> removeSelected = lDivs.where((final DivElement e) => e.attributes.containsKey(SELECTED_ATTRIBUTE)).toList();
+    List<DivElement> removeSelected =
+       lDivs.where((final DivElement e) => e.attributes.containsKey(SELECTED_ATTRIBUTE)).toList();
+
     removeSelected.remove(lDivs[selected]);
     removeSelected.forEach((final DivElement e){e.attributes.remove(SELECTED_ATTRIBUTE);});
 

@@ -32,7 +32,8 @@ class HostElemPropBind implements IPropBind, IComputedBind {
                                          new PropertyBindSet(LIST1, () => list1, (final List<int> l){list1 = l;})];
 
   Function get _computedStrF => () => this.computedStr(i2);
-  Map<String, ComputedBind> get bindComputed => {COMPUTED_STR_I2 : new ComputedBind(COMPUTED_STR_I2, _computedStrF, [I2])};
+  Map<String, ComputedBind> get bindComputed =>
+      {COMPUTED_STR_I2 : new ComputedBind(COMPUTED_STR_I2, _computedStrF, [I2])};
 }
 
 class HostElem extends HtmlElement with HostElemPropBind, BindBaseCtrl implements ICustomBindElement {

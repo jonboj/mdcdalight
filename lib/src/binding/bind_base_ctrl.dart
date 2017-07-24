@@ -49,7 +49,7 @@ abstract class ICustomBindElement implements HtmlElement, IPropBind {
 //Interface for the handler of different binding types.
 abstract class IBindHandler {
   bool get isNotEmpty;
-  //Updates and returns a list with the bindings that obtained a value different from previous.
+  //Updates and returns a Set with the bindings which obtained a value different from previous.
   Set<String> updateProperties(final List<String> bindIds);
 }
 
@@ -62,11 +62,11 @@ class BindBaseCtrl {
 
   static const String START_ONE_WAY = '[[';
   static const String END_ONE_WAY = ']]';
-  static const AttrBindTags oneWayMatcher = const AttrBindTags(START_ONE_WAY, END_ONE_WAY);
+  static const AttrBindTags _oneWayMatcher = const AttrBindTags(START_ONE_WAY, END_ONE_WAY);
 
   static const String START_TWO_WAY = '{{';
   static const String END_TWO_WAY = '}}';
-  static const AttrBindTags twoWayMatcher = const AttrBindTags(START_TWO_WAY, END_TWO_WAY);
+  static const AttrBindTags _twoWayMatcher = const AttrBindTags(START_TWO_WAY, END_TWO_WAY);
 
   /// Host role ///
   ICustomBindElement host;//Reference to host element
@@ -75,7 +75,7 @@ class BindBaseCtrl {
   PropertyListStrIndex<PropertyBindSet> propertyMap;
 
   /// Target role ///
-  TargetNodeTwoWayPropBind _targetTwoWayBind;
+  _TargetNodeTwoWayPropBind _targetTwoWayBind;
 
   // The different bindings handles
   List<IBindHandler> _regBindHandlers = new List<IBindHandler>();
@@ -91,7 +91,7 @@ class BindBaseCtrl {
     propertyMap = new PropertyListStrIndex<PropertyBindSet>(e.propNameIndex, e.bindProp, e.attrKeys);
 
     //Setting up binding in text nodes.
-    HostTextNodeBind hostTextNodeBind = new HostTextNodeBind(this);
+    _HostTextNodeBind hostTextNodeBind = new _HostTextNodeBind(this);
     if (hostTextNodeBind.isNotEmpty){
       _regBindHandlers.add(hostTextNodeBind);
     }
@@ -104,7 +104,7 @@ class BindBaseCtrl {
     if (targetList.isNotEmpty){
 
       //HostTargetNodePropBind
-      TargetOneWayAttrBind hostTargetNodePropBind = new TargetOneWayAttrBind(this, targetList);
+      _TargetOneWayAttrBind hostTargetNodePropBind = new _TargetOneWayAttrBind(this, targetList);
       if (hostTargetNodePropBind.isNotEmpty){
         _regBindHandlers.add(hostTargetNodePropBind);
       }
@@ -134,7 +134,9 @@ class BindBaseCtrl {
     _log.debug(()=> 'updateProps : ' + bindIds.toString());
 
     //Update the twoway notifications from targets.
-    List<String> bindsToUpdateFromTwoWay = bindIds.toSet().intersection(_twoWayBindsNotifications.keys.toSet()).toList();
+    List<String> bindsToUpdateFromTwoWay =
+      bindIds.toSet().intersection(_twoWayBindsNotifications.keys.toSet()).toList();
+
     bindsToUpdateFromTwoWay.forEach((final String s){
       propertyMap[s].value = _twoWayBindsNotifications[s].value;
       _twoWayBindsNotifications.remove(s);
@@ -149,7 +151,8 @@ class BindBaseCtrl {
     });
 
     //Notify subscriptions.
-    final List<String> subScribedBindsToNotify = bindsWithNewValue.intersection(_updateNotifications.keys.toSet()).toList();
+    final List<String> subScribedBindsToNotify =
+      bindsWithNewValue.intersection(_updateNotifications.keys.toSet()).toList();
     //Call the registered callback.
     subScribedBindsToNotify.forEach((final String idSign){_updateNotifications[idSign]();});
   }
@@ -181,7 +184,7 @@ class BindBaseCtrl {
     //Get binded properties which occur as attributes for current target node.
     List<String> lBindAttr = propertyMap.attrKeys.toSet().intersection(host.attributes.keys.toSet()).toList();
     lBindAttr.forEach((final String attrStr){
-      final String valueStr = oneWayMatcher.parseValueStr(host.attributes[attrStr]);
+      final String valueStr = _oneWayMatcher.parseValueStr(host.attributes[attrStr]);
       if (valueStr.isNotEmpty){
         //This is a binding
         final String propKey = propertyMap.propKeyFromAttrFormat(attrStr);
@@ -194,7 +197,7 @@ class BindBaseCtrl {
   //Invoked from twoway bind host.
   void registerTwoWayHost(final BindBaseCtrl hostTwoWay){
     Map<String, String> twoWayBindAttrMap = _getAttrTwoWayBindings();
-    _targetTwoWayBind = new TargetNodeTwoWayPropBind(this, hostTwoWay, twoWayBindAttrMap);
+    _targetTwoWayBind = new _TargetNodeTwoWayPropBind(this, hostTwoWay, twoWayBindAttrMap);
 
     //If empty no two-way bindings at this target.
     if (_targetTwoWayBind.isNotEmpty){
@@ -218,7 +221,7 @@ class BindBaseCtrl {
     //Get binded properties which occur as attributes for current target node.
     List<String> lBindAttr = host.attributes.keys.toSet().intersection(propertyMap.attrKeys.toSet()).toList();
     lBindAttr.forEach((final String attrStr){
-      final String valueStr = twoWayMatcher.parseValueStr(host.attributes[attrStr]);
+      final String valueStr = _twoWayMatcher.parseValueStr(host.attributes[attrStr]);
       if (valueStr.isNotEmpty){
         //This is a binding
         final String propKey = propertyMap.propKeyFromAttrFormat(attrStr);
@@ -231,14 +234,14 @@ class BindBaseCtrl {
 }
 
 //For a host node handles bindings to sub text nodes bindings.
-class HostTextNodeBind implements IBindHandler {
+class _HostTextNodeBind implements IBindHandler {
 
   final BindBaseCtrl _ctrl;
 
   Map<String, List<NodeBindWrap>> _bindingToNodeMap;
 
   //// Construction ////
-  HostTextNodeBind(final BindBaseCtrl this._ctrl){
+  _HostTextNodeBind(final BindBaseCtrl this._ctrl){
     //Build the dependencies map.
     _bindingToNodeMap = BindingParser.wrapTextNodes(_ctrl.host);
 
@@ -271,7 +274,7 @@ class HostTextNodeBind implements IBindHandler {
     final Set<String> bindSign = bindComp.keys.toSet().intersection(_bindingToNodeMap.keys.toSet());
 
     bindSign.forEach((final String compBindSignature){
-      //For each computed binding move wraped nodes to dependent bindings.
+      //For each computed binding move wrapped nodes to dependent bindings.
       final List<NodeBindWrap> nodeWraps = _bindingToNodeMap[compBindSignature];
       final ComputedBind cBind = bindComp[compBindSignature];
       cBind.deps.forEach((final String depBindStr){
@@ -287,16 +290,16 @@ class HostTextNodeBind implements IBindHandler {
 }
 
 //For a host node handle set bindings to target nodes properties.
-class TargetOneWayAttrBind implements IBindHandler {
+class _TargetOneWayAttrBind implements IBindHandler {
 
-  static final LogMdcda _log = new LogMdcda.fromType(TargetOneWayAttrBind);
+  static final LogMdcda _log = new LogMdcda.fromType(_TargetOneWayAttrBind);
 
   final BindBaseCtrl _ctrl;
 
   Map<String, List<PropertyBindSet>> _bindingToTargetProp = new Map<String, List<PropertyBindSet>>();
 
   //// Construction ////
-  TargetOneWayAttrBind(final BindBaseCtrl this._ctrl, final List<BindBaseCtrl> targetList){
+  _TargetOneWayAttrBind(final BindBaseCtrl this._ctrl, final List<BindBaseCtrl> targetList){
     _registerOneWayBindings(targetList);
   }
 
@@ -309,7 +312,8 @@ class TargetOneWayAttrBind implements IBindHandler {
       Set<String> unMatched = oneWayBindMap.keys.toSet();
       unMatched.removeAll(_ctrl.propertyMap.keys);
       unMatched.forEach((final String s){
-        _log.debug('_registerOneWayBindings - Literal or unmatched binding : ' + s + ', ' + oneWayBindMap[s].signatureDom);
+        _log.debug('_registerOneWayBindings - Literal or unmatched binding : ' + s + ', '
+                    + oneWayBindMap[s].signatureDom);
       });
       if (unMatched.isNotEmpty){
         _updateTargetFromLiterals(targetCtrl, oneWayBindMap, unMatched.toList());
@@ -371,9 +375,9 @@ class TargetOneWayAttrBind implements IBindHandler {
 }
 
 //For a target node holds the binding info for notifying host.
-class TargetNodeTwoWayPropBind implements IBindHandler {
+class _TargetNodeTwoWayPropBind implements IBindHandler {
 
-  static final LogMdcda _log = new LogMdcda.fromType(TargetNodeTwoWayPropBind);
+  static final LogMdcda _log = new LogMdcda.fromType(_TargetNodeTwoWayPropBind);
 
   final BindBaseCtrl _ctrl;//Node in target role.
 
@@ -381,7 +385,7 @@ class TargetNodeTwoWayPropBind implements IBindHandler {
 
   final Map<String, String> _targetToHostSignatures;
 
-  TargetNodeTwoWayPropBind(final BindBaseCtrl this._ctrl, final BindBaseCtrl this._twoWayBindHost,
+  _TargetNodeTwoWayPropBind(final BindBaseCtrl this._ctrl, final BindBaseCtrl this._twoWayBindHost,
       final Map<String, String> this._targetToHostSignatures) {
     //Build the dependencies map. Done as target node. host is the two-way bind host, not this rolle as host.
 

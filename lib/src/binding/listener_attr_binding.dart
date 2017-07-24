@@ -28,7 +28,7 @@ abstract class ListenerAttrBinding {
   static const String ON_EVENT_PREFIX = 'on-';
 
   //From tag binding in html doc to the host class method.
-  Map<String, EventListener> listenerMap;
+  Map<String, EventListener> _listenerHandlerMap;
 
   //Map from binded target and event type to listener method.
   Map<String, String> _bindListenerMap = new Map<String, String>();
@@ -40,7 +40,14 @@ abstract class ListenerAttrBinding {
   List<Element> _bindedNodes = new List<Element>();
 
   void registerAttributeEventHandlers(final Element element, final List<String> eventTypes){
-    eventTypes.forEach((final String eventTypeStr){ _bindedNodes.addAll(_addAttributeEventHandlers(element, eventTypeStr));});
+    eventTypes.forEach(
+        (final String eventTypeStr){
+          _bindedNodes.addAll(_addAttributeEventHandlers(element, eventTypeStr));
+        });
+  }
+
+  void set listenerHandlers(final Map<String, EventListener> listenerHandler){
+    _listenerHandlerMap = listenerHandler;
   }
 
   //Callback to added to listener.
@@ -57,8 +64,8 @@ abstract class ListenerAttrBinding {
 
     //The element with the binding maps to the method.
     final String methodName = _bindListenerMap[_targetHashKey(event.type, bindTarget)];
-    if (listenerMap.containsKey(methodName)){
-      listenerMap[methodName](event);
+    if (_listenerHandlerMap.containsKey(methodName)){
+      _listenerHandlerMap[methodName](event);
       return;
     }
 
@@ -75,7 +82,7 @@ abstract class ListenerAttrBinding {
 
       final String bindingStr = e.attributes[onEventType];
       _log.debug('Attribute with ' + onEventType + ', ' + e.hashCode.toString() + ' on : ' + bindingStr);
-      if (listenerMap.containsKey(bindingStr)){
+      if (_listenerHandlerMap.containsKey(bindingStr)){
         _bindListenerMap[_targetHashKey(eventType, e)] = bindingStr;
       }else {
         _log.warn('_addAttributeEventHandlers attribute binding to method not defined : ' + bindingStr);

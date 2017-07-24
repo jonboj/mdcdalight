@@ -17,7 +17,7 @@ library mdcdalight;
 export 'src/binding/bind_base_ctrl.dart';
 export 'src/custom_element/html_import_manager.dart';
 export 'src/custom_element/element_tag_bundle.dart';
-export 'src/custom_element/listener_attr_binding.dart';
+export 'package:mdcdalight/src/binding/listener_attr_binding.dart';
 
 export 'src/binding/binding_types.dart';
 export 'src/binding/list_repeat_parse.dart';

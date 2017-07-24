@@ -27,7 +27,7 @@ class LoadSyncStarter {
   final Completer _completer = new Completer();
   StartFunc_t _startMethod;
 
-  List<LinkElement> lLinks = new List<LinkElement>();
+  List<LinkElement> _lLinks = new List<LinkElement>();
 
   Future startLoadOfElement(StartFunc_t startMethod, final List<String> linkElemNames) {
     _startMethod = startMethod;
@@ -35,7 +35,7 @@ class LoadSyncStarter {
     linkElemNames.forEach((final String name){
 
       LinkElement linkElement = HtmlImportManager.insertLink(name);
-      lLinks.add(linkElement);
+      _lLinks.add(linkElement);
 
       if (linkElement == null){
         _log.warn('startLoadOfElement linkElement null, file : ' + name);
@@ -43,9 +43,9 @@ class LoadSyncStarter {
 
       linkElement.onLoad.listen((final Event e){
         _log.info('startLoadOfElement load event : ' + linkElement.href);
-        lLinks.remove(linkElement);
-        if (lLinks.isEmpty){
-          recievedAllEvents();
+        _lLinks.remove(linkElement);
+        if (_lLinks.isEmpty){
+          _recievedAllEvents();
         }
       });
 
@@ -53,7 +53,7 @@ class LoadSyncStarter {
     return _completer.future;//Send future object back to client.
   }
 
-  void recievedAllEvents() {
+  void _recievedAllEvents() {
     _log.info('recievedAllEvents');
     _completer.complete();
     _startMethod();

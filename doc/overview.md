@@ -180,13 +180,14 @@ This category of components are wrapped by interfacing with a js-interop object 
 class MDCTemporaryDrawer {
   external factory MDCTemporaryDrawer(final Element e);
   external void set open(final bool state);
+  external bool get open;
 }
 ```
 
 ### Import of components from mdc web
 
 The wrapped components implemented in mdcdalight serves for demo and tutorial.
-In order to make the maintainment more sustainable, the import done by the developer.
+In order to make the maintainment more sustainable, the import is done by the developer.
  
 The `css` and `js` files are build with the mdc-web build, see [how to doc](mdcwebimport.md) for a step by step walkthrough.
 

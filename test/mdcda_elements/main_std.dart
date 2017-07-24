@@ -13,7 +13,9 @@ main() async {
   MdcdaListSelect.registerElement();
   HostElem.registerElement();
 
-  await new LoadSyncStarter().startLoadOfElement(startUnitTest, ['packages/mdcdalight/mdcda_elements/mdcda_list_select.html', 'host_elem.html']);
+  const List<String> HTML_FILES = const ['packages/mdcdalight/mdcda_elements/mdcda_list_select.html',
+                                         'host_elem.html'];
+  await new LoadSyncStarter().startLoadOfElement(startUnitTest, HTML_FILES);
   print('======= End of mdcda-repeat test =======');
 }
 

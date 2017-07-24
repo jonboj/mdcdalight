@@ -65,7 +65,7 @@ The commands and configurations are executed in root of the cloned mdc-web direc
 
 ### Transfer to mdcdalight
 
-With the build `css` and `js` files copied to a sub directory of `lib` in mdcdalight e.g. `lib/mdc_web_js_v0_13_0` two paths shall be configured.
+With the build `css` and `js` files copied to a sub directory of `lib` in mdcdalight e.g. `lib/mdc_web_js_v0_15_0` two paths shall be configured.
 
 * In dart file `mdc_dartwrap/mdc_webjs_path.dart` the constant `MDC_WEBJS_PATH` shall be set to the imported files. e.g. `packages/mdcdalight/mdc_web_js_v0_15_0/`.
 
