@@ -17,7 +17,7 @@ For more details see [overview doc](./doc/overview.md).
 
 ### Demo and tutorial app
 
-[daflight](https://github.com/jonboj/daflight) is small demo and tutorial app written for illustration of concepts in the mdcdalight lib. Hosted build of daflight : https://tid4sport.com/daflight/web    
+[daflight](https://github.com/jonboj/daflight) is small demo and tutorial app written for illustration of concepts in the mdcdalight lib. Hosted build of daflight : https://jonboj.net/daflight/web
 
 How to import from [mdc web][mdcweb] is described in [mdc web import](./doc/mdcwebimport.md)    
 
